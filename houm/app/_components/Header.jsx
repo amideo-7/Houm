@@ -1,5 +1,5 @@
 "use client"
-import { Button } from '@/components/ui/button'
+import { Button } from '../../components/ui/button'
 import { Plus } from 'lucide-react'
 import Image from 'next/image'
 import React, { useEffect } from 'react'
@@ -22,23 +22,24 @@ function Header() {
                 <Link href={'/'}>
                     <li className={`'hover:text-primary font-medium cursor-pointer'
                     ${path=='/'&&'text-primary'}`}>
-                        For Rent
+                        Listings
                     </li>
                 </Link>
                 <li className='hover:text-primary font-medium cursor-pointer'>
-                    Predict Price
+                    <Link href={'http://127.0.0.1:5000'}>Predict Price</Link> 
                 </li>
-                <li className='hover:text-primary font-medium cursor-pointer'>
-                    Agent Finder
-                </li>
+                
             </ul>
         </div>
 
         <div className='flex gap-2 items-center'>
-            <Button className="flex gap-2"><Plus className='h-5 w-5'></Plus>Post Your Add</Button>
+
+            <Link href={'/add-new-listing'}>
+                <Button className="flex gap-2"><Plus className='h-5 w-5'></Plus>Post Your Add</Button>
+            </Link>
             {
                 isSignedIn?
-                <UserButton></UserButton>
+                <UserButton className='h-40 w-40'></UserButton>
                 :<Link href={'/sign-in'}><Button variant='outline'>Login</Button></Link>
             }
         </div>
